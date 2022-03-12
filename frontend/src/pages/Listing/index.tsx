@@ -26,13 +26,16 @@ export default function Listing() {
             .then(response => {
                 const data = response.data as MoviePage;
                 setPage(data);
-                setPageNumber(pageNumber);
             });
     }, [pageNumber]);
+
+    const handlePageChange= (newPageNumber: number) => {
+        setPageNumber(newPageNumber);
+    }
     
     return (        
         <>
-            <Pagination />
+            <Pagination page = {page} onChange={handlePageChange} />
             <div className="container">
                 <div className="row">
                     
